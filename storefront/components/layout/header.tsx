@@ -81,9 +81,12 @@ export default function Header() {
             </button>
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
-              <span className="font-heading text-2xl font-semibold tracking-tight">
-                Store
+            <Link href="/" className="flex items-center gap-2 group">
+              <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-md bg-foreground text-background">
+                <span className="block h-2 w-2 rounded-full bg-accent group-hover:animate-pulse-dot" />
+              </span>
+              <span className="font-heading text-xl font-bold tracking-[-0.02em]">
+                PULSE
               </span>
             </Link>
 

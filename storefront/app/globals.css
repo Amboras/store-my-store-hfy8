@@ -4,36 +4,37 @@
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
-    --foreground: 0 0% 10%;
-    --muted: 40 10% 94%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 35 40% 50%;
+    /* PULSE — modern tech-gadgets palette
+       Light UI with warm near-black text and an electric-cyan accent. */
+    --background: 220 20% 99%;
+    --foreground: 222 25% 10%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 222 10% 42%;
+    --accent: 188 94% 43%;        /* electric cyan */
     --accent-foreground: 0 0% 100%;
-    --border: 40 10% 88%;
-    --ring: 35 40% 50%;
-    --primary: 0 0% 10%;
-    --primary-foreground: 0 0% 98%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 98%;
+    --border: 220 14% 90%;
+    --ring: 188 94% 43%;
+    --primary: 222 47% 11%;        /* deep charcoal */
+    --primary-foreground: 0 0% 100%;
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
 
     /* Brand colors (dynamically injected from Store.metadata.brand) */
     /* Access in CSS: var(--brand-primary), var(--brand-secondary) */
-    /* Managed by BrandStyleInjector component */
   }
 
   .dark {
-    --background: 0 0% 6%;
-    --foreground: 40 20% 94%;
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 55%;
-    --accent: 35 45% 55%;
-    --accent-foreground: 0 0% 100%;
-    --border: 0 0% 16%;
-    --ring: 35 45% 55%;
-    --primary: 40 20% 94%;
-    --primary-foreground: 0 0% 6%;
-    --destructive: 0 72% 51%;
+    --background: 222 30% 6%;
+    --foreground: 210 20% 96%;
+    --muted: 222 20% 12%;
+    --muted-foreground: 215 15% 65%;
+    --accent: 188 94% 48%;
+    --accent-foreground: 222 47% 8%;
+    --border: 222 20% 18%;
+    --ring: 188 94% 48%;
+    --primary: 210 20% 96%;
+    --primary-foreground: 222 47% 8%;
+    --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 98%;
   }
 }
@@ -48,7 +49,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+    @apply font-heading tracking-tight;
   }
 }
 
@@ -70,6 +71,18 @@
   }
   .link-underline:hover::after {
     @apply w-full;
+  }
+
+  /* Electric accent ring / glow */
+  .glow-accent {
+    box-shadow: 0 0 0 1px hsl(var(--accent) / 0.25), 0 8px 40px -8px hsl(var(--accent) / 0.4);
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 56px 56px;
   }
 
   /* Brand color utilities - uses colors from Store.metadata.brand */
@@ -109,7 +122,8 @@ html {
 
 /* Selection color */
 ::selection {
-  @apply bg-accent/20 text-foreground;
+  background: hsl(var(--accent) / 0.25);
+  color: hsl(var(--foreground));
 }
 
 /* Focus styles */
@@ -131,4 +145,22 @@ html {
 
 .animate-fade-in {
   animation: fade-in 0.3s ease-out;
+}
+
+/* Marquee ticker (urgency / announcement) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Soft pulse for live indicators */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.4; }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
 }

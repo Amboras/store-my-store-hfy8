@@ -46,13 +46,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block">
-              <span className="font-heading text-2xl font-semibold">
-                Store
+            <Link href="/" className="inline-flex items-center gap-2">
+              <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-md bg-foreground text-background">
+                <span className="block h-2 w-2 rounded-full bg-accent" />
+              </span>
+              <span className="font-heading text-xl font-bold tracking-[-0.02em]">
+                PULSE
               </span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Curated products crafted with care. Quality you can feel, design you can see.
+              Everyday tech, elevated. Smart gadgets engineered to make daily life easier, quieter, and a little more beautiful.
             </p>
           </div>
 
@@ -102,7 +105,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Store. All rights reserved.
+            &copy; {new Date().getFullYear()} PULSE. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <button
